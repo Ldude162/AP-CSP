@@ -11,7 +11,7 @@ import turtle as trtl
 painter = trtl.Turtle()
  
 #User input decides the scale of the drawing
-scale = int(input("What scale would you like the drawing to be? For example, 2 would make the drawing twice as big. Please note that the maximum scale is 4.")) 
+scale = float(input("What scale would you like the drawing to be? For example, 2 would make the drawing twice as big. Please note that the maximum scale is 4.")) 
 
 #Checks if the scale is too big
 if scale > 4:
