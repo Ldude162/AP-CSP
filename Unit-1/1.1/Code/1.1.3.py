@@ -14,7 +14,7 @@ num_floors = 63
 floor = 0
 towerReset = 0
 # iterate
-for i in range(63):
+while floor < num_floors:
   # set placement and color of turtle
   painter.penup()
   # detect if it's time for a new tower
