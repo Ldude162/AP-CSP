@@ -42,28 +42,31 @@ robot.speed(2)
 robot.showturtle()
 
 #---- TODO: change maze here
-wn.bgpic("maze1.png") # other file names should be maze2.png, maze3.png
+wn.bgpic("maze3.png") # other file names should be maze2.png, maze3.png
 
 #---- TODO: begin robot movement here
 # move robot forward with move()
 # turn robot left with turn_left()
 # sample while loop:
 i = 0
-while (i < 4): # forward 3
-  move()
-  i = i + 1 
-
-# Turns right
-i = 0
-while i < 3:
-  turn_left()
-  i = i + 1
-
-# Moves to the square
-i = 0
+# Repeat 4 times
 while i < 4:
-  move()
-  i = i + 1
+    # Move robot forward
+    move()
+    a = 0
+    # Turn right
+    while a < 3:
+        turn_left()
+        a = a + 1
+    # Move and turn left
+    move()
+    turn_left()
+    i = i + 1
+    # checks if it has reached the first gray square and changes color
+    if i == 2:
+        robot.pencolor("red")
+
+
 #---- end robot movement 
 
 wn.mainloop()
