@@ -42,28 +42,50 @@ robot.speed(2)
 robot.showturtle()
 
 #---- TODO: change maze here
-wn.bgpic("maze1.png") # other file names should be maze2.png, maze3.png
+wn.bgpic("maze2.png") # other file names should be maze2.png, maze3.png
 
 #---- TODO: begin robot movement here
 # move robot forward with move()
 # turn robot left with turn_left()
 # sample while loop:
+
+#Moves up 3
 i = 0
-while (i < 4): # forward 3
+while (i < 3): # forward 3
   move()
+  print("forward")
   i = i + 1 
 
-# Turns right
+# turns right
 i = 0
 while i < 3:
-  turn_left()
-  i = i + 1
+    turn_left()
+    print("left")
+    i = i + 1
 
-# Moves to the square
+# goes to the square
 i = 0
-while i < 4:
-  move()
-  i = i + 1
+while i < 2:
+    move()
+    print("forward")
+    i = i + 1
+
+# Goes back to start
+robot.goto(startx, starty)
+
+#Runs algorithm to go to 1 square off
+i = 0
+while i < 2:
+    a = 0
+    while a < 3:
+        move()
+        a = a + 1
+    turn_left()
+    i = i + 1
+
+# Moves to gray square
+move()
+
 #---- end robot movement 
 
 wn.mainloop()
