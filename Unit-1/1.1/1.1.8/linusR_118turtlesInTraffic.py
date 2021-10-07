@@ -1,6 +1,8 @@
-#   a118_turtles_in_traffic.py
-#   Move turtles horizontally and vertically across screen.
-#   Stopping turtles when they collide.
+'''
+Made by Linus Reynolds
+On 10/7/2021
+Turtles in Traffic 1.1.8
+'''
 import turtle as trtl
 
 # create two empty lists of turtles, adding to them later
@@ -44,26 +46,31 @@ for ht in horiz_turtles:
         steps = 0
         # moves turtle
         while steps < 50:
-            
+            # Checks that the turtle isn't about to collide
             if abs(x2 -x1) > 20 or abs(y2 - y1) > 20:
+              # If it won't collide, moves forward
               vt.forward(1)
               x1 = vt.xcor()
               y1 = vt.ycor()
               steps = steps + 1
             else:
+              # If it will, move out of the way
               vt.left(90)
               vt.forward(70)
               vt.right(90)
-              
+              # Sets variables so it won't break
               x2 = 0
               y2 = 0
     steps = 0
+    # Moves horizontal turtle
     while steps < 50:
         ht.forward(6)
         x2 = ht.xcor()
         y2 = ht.ycor()
         steps = steps + 1
+    # Turns it gray
     ht.color("gray")
+# Turns vertical turtles gray
 for vt in vert_turtles:
   vt.color("gray")
 
