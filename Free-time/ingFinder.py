@@ -5,22 +5,6 @@ import requests as req
 api = "https://api.wynncraft.com/v2/ingredient/list"
 apiSearch = "https://api.wynncraft.com/v2/ingredient/search/name/"
 
-#Trys to make a file, if it already exists it doesn't make a new one
-try:
-    #tries making a file, throws an error if it exists
-    file = open('test.txt', 'x')
-    #Writes data to the file
-    file.write(str(req.get(api).json()))
-    #Closes file
-    file.close()
-except:
-    #opens file
-    file = open('test.txt')
-
-#Reads file
-ings = file.read()
-file.close()
-
 #Asks the user what ingredient they want to look for
 search = input("Type in the first few letters of the ingredient you want to search")
 
@@ -29,7 +13,7 @@ if len(search) < 3:
     #Error message
     print("Couldn't find the ingredient! Try typing more letters!")
     #Checks that it is an actual ingredient
-elif ings.lower().__contains__(search.lower()):
+else:
     #Gets the stats of the ingredients searched
     searchResults = req.get(apiSearch + search).json()
     
@@ -42,6 +26,3 @@ elif ings.lower().__contains__(search.lower()):
         print("ID's:")
         for a in i['identifications']:
             print(a+ ':', 'Minimum:', i['identifications'][a]['minimum'], '| Maximum:', i['identifications'][a]['maximum']) 
-else:
-    #If the ingredient is not found in the list, this error gets triggered
-    print("Can't find this ingredient! Try checking the spelling and leaving out apostrophes!")
