@@ -1,44 +1,22 @@
-#   a118_turtles_in_traffic.py
-#   Move turtles horizontally and vertically across screen.
-#   Stopping turtles when they collide.
-import turtle as trtl
+my_courses = ["English", "Math", "CS"]
 
-# create two empty lists of turtles, adding to them later
-horiz_turtles = []
-vert_turtles = []
+redo = "y"
+while (redo == "y"):
+    for course in my_courses:
+        print() # blank line
+        print("Enter your points for " + course)
 
-# use interesting shapes and colors
-turtle_shapes = ["arrow", "turtle", "circle", "square", "triangle", "classic"]
-horiz_colors = ["red", "blue", "green", "orange", "purple", "gold"]
-vert_colors = ["darkred", "darkblue", "lime", "salmon", "indigo", "brown"]
+        points = int(input("Points -> "))
+        if (points >= 90):
+            print("A")
+        elif (points >= 80):
+            print("B")
+        elif (points >= 70):
+            print("C")
+        elif (points >= 60):
+            print("D")
+        else:
+            print("F")
 
-tloc = 50
-for s in turtle_shapes:
+    redo = input("Do you need to re-do these grades? (y/n)")
 
-  ht = trtl.Turtle(shape=s)
-  horiz_turtles.append(ht)
-  ht.penup()
-  new_color = horiz_colors.pop()
-  ht.fillcolor(new_color)
-  ht.goto(-200, tloc - 150)
-  ht.setheading(0)
-
-  vt = trtl.Turtle(shape=s)
-  vert_turtles.append(vt)
-  vt.penup()
-  new_color = vert_colors.pop()
-  vt.fillcolor(new_color)
-  vt.goto( -tloc + 150, 200)
-  vt.setheading(270)
-  
-  tloc += 50
-
-# TODO: move turtles across and down screen, stopping for collisions
-"""
-steps = 0
-while steps < 50:
-	steps = steps + 1
-"""
-
-wn = trtl.Screen()
-wn.mainloop()
