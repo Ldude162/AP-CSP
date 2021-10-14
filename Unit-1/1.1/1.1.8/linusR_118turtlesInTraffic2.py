@@ -15,7 +15,7 @@ horiz_colors = ["red", "blue", "green", "orange", "purple", "gold"]
 vert_colors = ["darkred", "darkblue", "lime", "salmon", "indigo", "brown"]
 
 
-# Creates turtles and puts them at the starting points
+# Creates turtles and puts them at the starting points.
 tloc = 50
 for s in turtle_shapes:
 
