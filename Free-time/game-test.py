@@ -12,10 +12,10 @@ while hp > 0 and enemyHP > 0:
 		enemyHP = enemyHP - random
 		print("You attacked for", random, "damage! The enemy's health is now", enemyHP)
 		random = rndm.randrange(10)
-		if enemyAtk <= 1:
+		if enemyAtk <= 1 and enemyHP > 10:
 			hp = hp -random
 			print('The enemy attacked you for', random, "damage. You now have", hp, "health.")
-		elif enemyAtk == 2:
+		elif enemyAtk == 2 or enemyHP <= 10:
 			enemyHP = enemyHP + random
 			print('The enemy healed for', random, 'health. They are on', enemyHP, 'HP, and you are on', hp, "HP.")
 	elif atkOrDef == 'h':
