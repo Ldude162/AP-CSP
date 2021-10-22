@@ -17,7 +17,7 @@ colors = ["cyan", "blue", "green", "yellow", "pink", "purple"]
 sizes = [0.5, 1, 1.5, 2, 2.5, 3]
 
 #-----countdown variables-----
-timer = 30
+timer = 5
 counter_interval = 1000   #1000 represents 1 second
 timer_up = False
 
