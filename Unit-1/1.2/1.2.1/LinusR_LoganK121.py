@@ -1,4 +1,8 @@
-# a121_catch_a_turtle.py
+'''
+Made by Linus Reynolds and Logan King
+On 10/22/2021
+Dot game thing 1.2.1
+'''
 #-----import statements-----
 import turtle
 import random
