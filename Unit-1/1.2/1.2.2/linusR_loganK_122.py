@@ -22,7 +22,7 @@ leader_scores_list = []
 player_name = input("What's your name?")
 
 #-----countdown variables-----
-timer = 5
+timer = 10
 counter_interval = 1000   #1000 represents 1 second
 timer_up = False
 
@@ -115,6 +115,7 @@ def manage_leaderboard():
   global score
   global spot
 
+  counter.clear()
   # load all the leaderboard records into the lists
   lb.load_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list)
 

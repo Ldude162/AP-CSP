@@ -1,4 +1,2 @@
-bob,300000
-linus,100
-lolol,2
-logan,-5
+linus,14
+linus,11

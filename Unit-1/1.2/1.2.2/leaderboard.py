@@ -1,17 +1,14 @@
 #   leaderboard.py
 # The leaderboard module to be used in a122 solution.
 
-
-
 # set the levels of scoring
-bronze_score = 15
-silver_score = 20
-gold_score = 25
+bronze_score = 4
+silver_score = 8
+gold_score = 12
 
 # load leaderboard from file
 def load_leaderboard(file_name, leader_names, leader_scores):
 
-  
   leaderboard_file = open(file_name, "r")  # need to create the file ahead of time in same folder
 
   # use a for loop to iterate through the content of the file, one line at a time
@@ -41,6 +38,7 @@ def load_leaderboard(file_name, leader_names, leader_scores):
     # TODO 4: add the player score to the list
     leader_scores.append(int(leader_score))
 
+
   leaderboard_file.close()
 
 
@@ -50,28 +48,29 @@ def update_leaderboard(file_name, leader_names, leader_scores, player_name, play
   leader_index = 0
   # TODO 5: loop through all the scores in the existing leaderboard list
   
-  while leader_index < len(leader_scores):
+  while (leader_index < len(leader_scores)):
     # TODO 6: check if this is the position to insert new score at
-    if player_score >= leader_scores[leader_index]:
+    if (player_score >= leader_scores[leader_index]):
       break
     else:
       leader_index = leader_index + 1
   
   # TODO 7: insert the new player and score at the appropriate position
-  leader_names.insert(leader_index, player_name)
   leader_scores.insert(leader_index, player_score)
-  print(leader_names + leader_scores)
+  leader_names.insert(leader_index, player_name)
+
   # TODO 8: keep both lists at 5 elements only (top 5 players)
-  while len(leader_names) > 5:
+
+  while(len(leader_names) > 5):
     leader_names.pop(5)
     leader_scores.pop(5)
-  print(leader_names + leader_scores)
+  
   # store the latest leaderboard back in the file
   leaderboard_file = open(file_name, "w")  # this mode opens the file and erases its contents for a fresh start
   leader_index = 0
   # TODO 9: loop through all the leaderboard elements and write them to the file
   
-  while leader_index < len(leader_names):
+  while (leader_index < len(leader_names)):
     leaderboard_file.write(leader_names[leader_index] + "," + str(leader_scores[leader_index]) + "\n")
     leader_index = leader_index + 1
   
@@ -110,10 +109,12 @@ def draw_leaderboard(leader_names, leader_scores, high_scorer, turtle_object, pl
   turtle_object.pendown()
   
   # TODO 10: Display a gold/silver/bronze message if player earned a gold/silver/or bronze medal; display nothing if no medal
-  '''
-  if ():
-    turtle_object.write("You earned a bronze medal!", font=font_setup)
-    turtle_object.write("You earned a silver medal!", font=font_setup)
+  
+  if (player_score >= gold_score):
     turtle_object.write("You earned a gold medal!", font=font_setup)
-  '''
+  elif (player_score >= silver_score):
+    turtle_object.write("You earned a silver medal!", font=font_setup)
+  elif (player_score >= bronze_score):
+    turtle_object.write("You earned a bronze medal!", font=font_setup)
+  
   
