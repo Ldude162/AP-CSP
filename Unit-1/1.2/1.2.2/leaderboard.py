@@ -1,6 +1,8 @@
 #   leaderboard.py
 # The leaderboard module to be used in a122 solution.
 
+
+
 # set the levels of scoring
 bronze_score = 15
 silver_score = 20
@@ -9,6 +11,7 @@ gold_score = 25
 # load leaderboard from file
 def load_leaderboard(file_name, leader_names, leader_scores):
 
+  
   leaderboard_file = open(file_name, "r")  # need to create the file ahead of time in same folder
 
   # use a for loop to iterate through the content of the file, one line at a time
@@ -36,7 +39,7 @@ def load_leaderboard(file_name, leader_names, leader_scores):
 
     
     # TODO 4: add the player score to the list
-
+    leader_scores.append(int(leader_score))
 
   leaderboard_file.close()
 
@@ -46,29 +49,32 @@ def update_leaderboard(file_name, leader_names, leader_scores, player_name, play
 
   leader_index = 0
   # TODO 5: loop through all the scores in the existing leaderboard list
-  '''
-    while ():
+  
+  while leader_index < len(leader_scores):
     # TODO 6: check if this is the position to insert new score at
-    if ():
+    if player_score >= leader_scores[leader_index]:
       break
     else:
       leader_index = leader_index + 1
-  '''
-  # TODO 7: insert the new player and score at the appropriate position
-
-
-  # TODO 8: keep both lists at 5 elements only (top 5 players)
-
   
+  # TODO 7: insert the new player and score at the appropriate position
+  leader_names.insert(leader_index, player_name)
+  leader_scores.insert(leader_index, player_score)
+  print(leader_names + leader_scores)
+  # TODO 8: keep both lists at 5 elements only (top 5 players)
+  while len(leader_names) > 5:
+    leader_names.pop(5)
+    leader_scores.pop(5)
+  print(leader_names + leader_scores)
   # store the latest leaderboard back in the file
   leaderboard_file = open(file_name, "w")  # this mode opens the file and erases its contents for a fresh start
   leader_index = 0
   # TODO 9: loop through all the leaderboard elements and write them to the file
-  '''
-    while ():
+  
+  while leader_index < len(leader_names):
     leaderboard_file.write(leader_names[leader_index] + "," + str(leader_scores[leader_index]) + "\n")
     leader_index = leader_index + 1
-  '''
+  
   leaderboard_file.close()
   
 

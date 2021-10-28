@@ -16,7 +16,7 @@ score = 0
 font_setup = ("Arial", 20, "normal")
 colors = ["cyan", "blue", "green", "yellow", "pink", "purple"]
 sizes = [0.5, 1, 1.5, 2, 2.5, 3]
-leaderboard_file_name = "C:\\Users\\418725\\OneDrive - Beaverton School District\\Computer Science\\AP-CSP\\Unit-1\\1.2\\1.2.2\\a122_leaderboard.txt"
+leaderboard_file_name = "leaderboard.txt"
 leader_names_list = []
 leader_scores_list = []
 player_name = input("What's your name?")
@@ -107,20 +107,25 @@ def start_game(x, y):
   wn.mainloop()
 
 # manages the leaderboard for top 5 scorers
+# manages the leaderboard for top 5 scorers
 def manage_leaderboard():
+  
   global leader_scores_list
   global leader_names_list
   global score
   global spot
 
+  # load all the leaderboard records into the lists
   lb.load_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list)
-  
-  if (len(leader_names_list) < 5 or score > leader_scores_list[4]):
-    lb.add_leaderboard_entry(leaderboard_file_name, player_name, score)
-    leader_names_list = lb.get_leaderboard_names(leaderboard_file_name)
-    leader_scores_list = lb.get_leaderboard_scores(leaderboard_file_name)
+
+  # TODO
+  if (len(leader_scores_list) < 5 or score > leader_scores_list[4]):
+    lb.update_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list, player_name, score)
+    lb.draw_leaderboard(leader_names_list, leader_scores_list, True, jeff, score)
+
   else:
     lb.draw_leaderboard(leader_names_list, leader_scores_list, False, jeff, score)
+
 
 #-----events----------------
 wn = turtle.Screen()
