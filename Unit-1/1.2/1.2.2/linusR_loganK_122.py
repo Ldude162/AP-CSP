@@ -1,7 +1,7 @@
 '''
 Made by Linus Reynolds and Logan King
-On 10/22/2021
-Dot game thing 1.2.1
+On 11/1/2021
+Dot game thing 1.2.2
 '''
 #-----import statements-----
 import turtle

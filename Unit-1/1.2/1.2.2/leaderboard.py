@@ -1,6 +1,8 @@
-#   leaderboard.py
-# The leaderboard module to be used in a122 solution.
-
+'''
+Made by Linus Reynolds and Logan King
+On 11/1/2021
+Dot game thing 1.2.2 module
+'''
 # set the levels of scoring
 bronze_score = 4
 silver_score = 8
