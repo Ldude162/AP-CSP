@@ -3,16 +3,24 @@ import turtle as trtl
 import random as rand
 
 #-----setup-----
-apple_image = "pear.gif" # Store the file name of your shape
+apple_image = "apple.gif" # Store the file name of your shape
 
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
 wn.addshape(apple_image) # Make the screen aware of the new file
 
-appl = trtl.Turtle()
-appl.penup()
-
 letters = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l']
+appls = []
+treeAppls = []
+treeLetters = []
+
+for i in letters:
+  appl = trtl.Turtle()
+  appl.shape(apple_image)
+  appl.penup()
+  appl.hideturtle()
+  appls.append(appl)
+  
 
 #-----functions-----
 # given a turtle, set that turtle to be shaped by the image file
@@ -34,13 +42,28 @@ def byeByeAppl():
 draw_apple(appl)
 wn.bgpic("background.gif")
 
-randomLetter = rand.choice(letters)
+
+
+for i in range(3):
+  appl = rand.choice(appls)
+  appl.showturtle()
+  appl.goto(rand.randrange(-150, 150), rand.randrange(0, 150))
+  for a in treeAppls:
+    while abs(a.xcor() - appl.xcor()) < 20 and abs(a.ycor() - appl.ycor()) < 20:
+      appl.goto(rand.randrange(-150, 150), rand.randrange(0, 150))
+  randomLetter = rand.choice(letters)
+  index = letters.index(randomLetter)
+  letters.pop(index)
+  treeAppls.append(appl)
+  treeLetters.append(randomLetter)
+
+
 
 wn.tracer(False)
 xcor = appl.xcor()
 ycor = appl.ycor()
 appl.goto(xcor - 20, ycor - 50)
-appl.write(randomLetter.upper(), color=("white"), font=("Arial", 50, "normal"))
+appl.write(randomLetter.upper(), font=("Arial", 50, "normal"))
 appl.goto(xcor,ycor)
 wn.tracer(True)
 
