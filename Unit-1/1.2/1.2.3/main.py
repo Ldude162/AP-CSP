@@ -12,6 +12,7 @@ wn.addshape(apple_image) # Make the screen aware of the new file
 letters = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l']
 treeAppls = []
 treeLetters = []
+activeLetters= []
 applsLeft = 3
 
 #-----functions-----
@@ -20,18 +21,20 @@ def draw_apple(active_apple):
   active_apple.shape(apple_image)
   wn.update()
 
-def byeByeAppl(index):
-  appl = treeAppls[index]
-  appl.right(90)
-  ycor = appl.ycor()
-  appl.clear()
-  while ycor > -120:
-    appl.forward(2)
+def byeByeAppl(letter):
+  if letter in treeLetters:
+    letterIndex = treeLetters.index(letter)
+    appl = treeAppls[letterIndex]
+    appl.right(90)
     ycor = appl.ycor()
-  appl.hideturtle()
-  newTurtle(index)
+    appl.clear()
+    while ycor > -120:
+      appl.forward(2)
+      ycor = appl.ycor()
+    appl.hideturtle()
+    newTurtle(letter)
 
-def firstTurtles(index):
+def firstTurtles():
   appl = trtl.Turtle()
   appl.shape(apple_image)
   appl.penup()
@@ -53,21 +56,23 @@ def firstTurtles(index):
   appl.goto(xcor,ycor)
   wn.tracer(True)
 
-def newTurtle(index):
+def newTurtle(letter):
   global applsLeft
   if letters:
     appl = trtl.Turtle()
     appl.shape(apple_image)
     appl.penup()
     appl.goto(rand.randrange(-150, 150), rand.randrange(0,  150))
+    
     for a in treeAppls:
       while abs(a.xcor() - appl.xcor()) < 50 and abs(a.ycor()   - appl.ycor()) < 50:
-        appl.goto(rand.randrange(-150, 150), rand.randrange(0,   150))
+        appl.goto(rand.randrange(-150, 150), rand.randrange(0, 150))
     randomLetter = rand.choice(letters)
     i = letters.index(randomLetter)
     letters.pop(i)
-    treeAppls[index] = appl
-    treeLetters[index] = randomLetter
+    letterIndex = treeLetters.index(letter)
+    treeAppls[letterIndex] = appl
+    treeLetters[letterIndex] = randomLetter
     wn.tracer(False)
     xcor = appl.xcor()
     ycor = appl.ycor()
@@ -76,8 +81,8 @@ def newTurtle(index):
     appl.write(randomLetter.upper(), font=("Arial", 50,   "normal"))
     appl.goto(xcor,ycor)
     wn.tracer(True)
-    for i in range(3):
-      wn.onkeypress(lambda i=i: byeByeAppl(i), treeLetters[i])
+    for i in treeLetters:
+      wn.onkeypress(lambda i=i: byeByeAppl(i), i)
     wn.listen()
     wn.mainloop()
   else:
@@ -92,10 +97,10 @@ wn.bgpic("background.gif")
 
 
 for i in range(3):
-  firstTurtles(i)
+  firstTurtles()
 
 
-for i in range(3):
-  wn.onkeypress(lambda i=i: byeByeAppl(i), treeLetters[i])
+for i in treeLetters:
+  wn.onkeypress(lambda i=i: byeByeAppl(i), i)
 wn.listen()
 wn.mainloop()
