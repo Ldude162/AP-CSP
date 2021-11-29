@@ -82,7 +82,7 @@ def newTurtle(letter):
     ycor = appl.ycor()
     appl.goto(xcor - 20, ycor - 50)
     appl.color('white')
-    appl.write(randomLetter.upper(), font=("Arial", 50,   "normal"))
+    appl.write(randomLetter.upper(), font=("Arial", 50, "normal"))
     appl.goto(xcor,ycor)
     wn.tracer(True)
     for i in treeLetters:
