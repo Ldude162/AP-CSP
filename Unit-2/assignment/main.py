@@ -10,12 +10,12 @@ for i in range(len(data)):
         f.write(data[i])
 f.close()
 f = open('temp.txt', 'r')
-data = f.read()
+newdata = f.read()
 f.close()
 split_strings = []
 n  = 3
-for index in range(0, len(data), n):
-    split_strings.append(data[index : index + n])
+for index in range(0, len(newdata), n):
+    split_strings.append(newdata[index : index + n])
 print(split_strings)
 
 for i in split_strings: 
