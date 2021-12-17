@@ -10,6 +10,8 @@ prevLetters = ['z', 'z']
 i = 0
 #Loops through all of the letters
 while i < len(newData):
+    if num > 18:
+        break
     #Checks if there is an ATG
     if prevLetters[0] == 'A' and prevLetters[1] == 'T' and newData[i] == 'G':
         # write down the position of the atg
@@ -21,8 +23,8 @@ while i < len(newData):
         # split the strings into parts of 3
         split_strings = []
         n  = 3
-        for a in range(0, len(newData), n):
-            split_strings.append(newData[a : a + n])
+        for a in range(0, len(newNewData), n):
+            split_strings.append(newNewData[a : a + n])
         index = 1
         # search through all of the parts
         for b in split_strings:
@@ -30,14 +32,18 @@ while i < len(newData):
             if b == 'TAG' or b == 'TAA' or b == 'TGA':
                 f = open('positions.txt', 'a')
                 # writes down the position of the stop
-                f.write('end ' + str(num) + ' is at ' + str(index * 3 + 261 + i) + '\n')
+                f.write('end ' + str(num) + ' is at ' + str(index * 3 + 264 + i) + '\n')
                 f.close()
                 print(b)
                 num += 1
                 # set the next character to check for
-                a = index * 3 + 258 + i
-                prevLetters[0] = newData[a - 1]
-                prevLetters[1] = newData[a - 1]
+                a = index * 3 + i
+                print(i)
+                try:
+                    prevLetters[0] = newData[a - 2]
+                    prevLetters[1] = newData[a - 1]
+                except:
+                    print('failed at ' + str(i))
                 i = a
                 # stop checking for other stop codons
                 break
