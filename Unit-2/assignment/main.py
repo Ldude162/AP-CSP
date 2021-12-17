@@ -108,7 +108,7 @@ while i < len(newData):
                 f = open('output.txt', 'a')
                 f.write('Aspartic Acid, ')
                 f.close
-            elif b == 'GAA' or b == 'GAG'
+            elif b == 'GAA' or b == 'GAG':
                 f = open('output.txt', 'a')
                 f.write('Glutamic Acid, ')
                 f.close
