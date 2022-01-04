@@ -32,7 +32,7 @@ while i < len(newData):
             if b == 'TAG' or b == 'TAA' or b == 'TGA':
                 f = open('positions.txt', 'a')
                 # writes down the position of the stop
-                f.write('end ' + str(num) + ' is at ' + str(index * 3 + 264 + i) + '\n')
+                f.write('end ' + str(num) + ' is at ' + str(index * 3 + 263 + i) + '\n')
                 f.close()
                 print(b)
                 num += 1
@@ -40,10 +40,10 @@ while i < len(newData):
                 a = index * 3 + i
                 print(i)
                 try:
-                    prevLetters[0] = newData[a - 2]
                     prevLetters[1] = newData[a - 1]
                 except:
                     print('failed at ' + str(i))
+                    prevLetters[0] = newData[a - 2]
                 i = a
                 # stop checking for other stop codons
                 break
