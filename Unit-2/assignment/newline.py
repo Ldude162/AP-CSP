@@ -1,4 +1,4 @@
-f = open('data.txt', 'r')
+f = open('newdata.txt', 'r')
 data = f.read()
 f.close()
 f = open('output.txt', 'x')
