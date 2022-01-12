@@ -172,6 +172,14 @@ def start():
 
 def endGame():
     global keepGoing
+    f = open('leaderboard.txt', 'r')
+    highscore = f.read()
+    f.close()
+    if redBox.lap - 2 > int(highscore):
+        highscore = redBox.lap - 2
+        f = open('leaderboard.txt', 'w')
+        f.write(str(redBox.lap - 2))
+        f.close()
     while keepGoing:
         mouse = game.mouse.get_pos()
         for event in game.event.get():
@@ -194,6 +202,7 @@ def endGame():
 
         surface.blit(gameOver, (150,150))
         surface.blit(mainMenu, (175,205))
+        surface.blit(startFont.render('High Score: ' + str(highscore), True, colors[3]), (150, 120))
         surface.blit(startFont.render("Score: " + str(redBox.lap - 2), True, colors[3]),(175,175))
         surface.blit(quitText,(0,0))
         game.display.update()
