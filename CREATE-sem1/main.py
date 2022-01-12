@@ -43,6 +43,18 @@ class Ground(game.sprite.Sprite):
     def draw(self):
         surface.blit(self.image, self.rect)
 
+class Ceiling(game.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = game.Surface((400,50))
+        self.image.fill(colors[5])
+        self.rect = self.image.get_rect()
+        self.rect.x = 0
+        self.rect.y = 0
+    
+    def draw(self):
+        surface.blit(self.image, self.rect)
+
 class Player(game.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -57,9 +69,10 @@ class Player(game.sprite.Sprite):
 
   # Draws the player on the screen and updates it
     def draw(self):
-        self.rect.y = 0
         if self.onground == True:
             self.rect.bottom = ground.rect.top
+        else:
+            self.rect.top = ceiling.rect.bottom
         surface.blit(self.image, self.rect)
 
   # Function for jumping
@@ -82,10 +95,12 @@ class Redbox(game.sprite.Sprite):
         self.location = 1
 
     def draw(self):
-        self.rect.y = 0
 
         if self.location == 1:
             self.rect.bottom = ground.rect.top
+        else:
+            self.rect.top = ceiling.rect.bottom
+
         surface.blit(self.image, self.rect)
         self.rect.x -= math.log(self.lap,1.2)
         if self.rect.x <= 0:
@@ -98,9 +113,11 @@ allSprites = game.sprite.Group()
 ground = Ground()
 player = Player()
 redBox = Redbox()
+ceiling = Ceiling()
 allSprites.add(player)
 allSprites.add(ground)
 allSprites.add(redBox)
+allSprites.add(ceiling)
 ticktock = game.time.Clock()
 
 
@@ -126,10 +143,9 @@ def start():
 
         surface.fill(colors[4])
 
-        if 0 <= mouse[0] <= 30 and 0 <= mouse[1] <= 20:
-            game.draw.rect(surface,colors[0],[0,0,30,20])
-        else:
-            game.draw.rect(surface,colors[1],[0,0,30,20])
+
+
+        
 
 
         collide = player.rect.colliderect(redBox.rect)
@@ -137,8 +153,13 @@ def start():
         if collide:
             endGame()
 
+        ceiling.draw()
 
-        surface.blit(startFont.render("Score: " + str(redBox.lap - 2), True, colors[3]),(175,20))
+        if 0 <= mouse[0] <= 30 and 0 <= mouse[1] <= 20:
+            game.draw.rect(surface,colors[0],[0,0,30,20])
+        else:
+            game.draw.rect(surface,colors[1],[0,0,30,20])
+        surface.blit(startFont.render("Score: " + str(redBox.lap - 2), True, colors[3]),(175,10))
         surface.blit(quitText,(0,0))
         surface.blit(player.image, player.rect)
         surface.blit(redBox.image, redBox.rect)
