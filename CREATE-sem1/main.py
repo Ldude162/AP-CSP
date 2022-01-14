@@ -1,6 +1,6 @@
 '''
-Made by TheZeldaBoi/Ldude162
-Submission for GitHub gameoff 2021
+Made by Linus Reynolds
+Sem 1 Create task
 '''
 
 #--- Import modules ---
