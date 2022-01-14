@@ -109,15 +109,10 @@ class Redbox(game.sprite.Sprite):
             self.lap += 1
 
 #--- sprites and objects ---
-allSprites = game.sprite.Group()
 ground = Ground()
 player = Player()
 redBox = Redbox()
 ceiling = Ceiling()
-allSprites.add(player)
-allSprites.add(ground)
-allSprites.add(redBox)
-allSprites.add(ceiling)
 ticktock = game.time.Clock()
 
 
@@ -163,7 +158,6 @@ def start():
         surface.blit(quitText,(0,0))
         surface.blit(player.image, player.rect)
         surface.blit(redBox.image, redBox.rect)
-        allSprites.update()
         player.draw()
         frame += 1
         redBox.draw()
