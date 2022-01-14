@@ -134,13 +134,14 @@ def start():
     print("started")
     frame = 1
     global keepGoing
-    
+    global quit
     while keepGoing:
         ticktock.tick(30)
         for event in game.event.get():
             if event.type == game.MOUSEBUTTONDOWN:
                 if 0 <= mouse[0] <= 30 and 0 <= mouse[1] <= 20:
-                    game.quit()
+                    quit = True
+                    keepGoing = False
             elif event.type == game.KEYDOWN:
                 if event.key == game.K_SPACE:
                     player.gravitySwitch()
@@ -179,6 +180,7 @@ def start():
 
 def endGame():
     global keepGoing
+    global quit
     f = open('leaderboard.txt', 'r')
     highscore = f.read()
     f.close()
@@ -193,7 +195,8 @@ def endGame():
 
             if event.type == game.MOUSEBUTTONDOWN:
                 if 0 <= mouse[0] <= 30 and 0 <= mouse[1] <= 20:
-                    game.quit()
+                    quit = True
+                    keepGoing = False
                 elif 175 <= mouse[0] <= 255 and 200 <= mouse[1] <= 220:
                     keepGoing = False
 
@@ -216,8 +219,9 @@ def endGame():
 
 #--- start loop ---
 
+quit = False
 keepGoing = True
-while True:
+while quit != True:
     while keepGoing:
         ticktock.tick(60)
         mouse = game.mouse.get_pos()
@@ -226,7 +230,8 @@ while True:
                 if 115 <= mouse[0] <= 255 and 130 <= mouse[1] <= 170:
                     start()
                 elif 0 <= mouse[0] <= 30 and 0 <= mouse[1] <= 20:
-                    game.quit()
+                    quit = True
+                    keepGoing = False
 
         surface.fill((0,0,255))
 
@@ -247,5 +252,3 @@ while True:
 
         game.display.update()
     keepGoing = True
-    player = Player()
-    redBox = Redbox()
