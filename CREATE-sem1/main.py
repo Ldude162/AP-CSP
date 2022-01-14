@@ -31,6 +31,9 @@ gameOver = startFont.render('Game Over!', True, colors[3])
 mainMenu = quitFont.render('Main Menu', True, colors[5])
 
 #--- classes ---
+'''
+Creates a ground object, which is on the bottom of the screen
+'''
 class Ground(game.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -43,6 +46,9 @@ class Ground(game.sprite.Sprite):
     def draw(self):
         surface.blit(self.image, self.rect)
 
+'''
+Creates a ceiling object, which is on the top of the screen
+'''
 class Ceiling(game.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -55,6 +61,9 @@ class Ceiling(game.sprite.Sprite):
     def draw(self):
         surface.blit(self.image, self.rect)
 
+'''
+Creates the player, which can switch from the top and bottom.
+'''
 class Player(game.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -82,6 +91,10 @@ class Player(game.sprite.Sprite):
         elif self.onground == True:
             self.onground = False
 
+
+'''
+Creates the enemy, which is randomly on either the top or bottom.
+'''
 class Redbox(game.sprite.Sprite):
     def __init__(self):
         super().__init__()
