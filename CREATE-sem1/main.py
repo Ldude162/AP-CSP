@@ -7,6 +7,7 @@ Sem 1 Create task
 import math
 import random as rand
 import pygame as game
+import os
 
 #--- Start display ---
 game.init()
@@ -219,9 +220,21 @@ def endGame():
     global quit
 
     # high score system, opens high score file to see the current high score.
-    f = open('leaderboard.txt', 'r')
-    highscore = f.read()
-    f.close()
+
+    # does file exist?
+    if os.path.exists('leaderboard.txt'):
+
+        # if so, read file.
+        f = open('leaderboard.txt', 'r')
+        highscore = f.read()
+        f.close()
+    else:
+
+        # otherwise, create new file.
+        f = open('leaderboard.txt', 'w')
+        f.write('0')
+        highscore = '0'
+        f.close()
 
     # Checks if the player has the new high score.
     if redBox.lap - 2 > int(highscore):
