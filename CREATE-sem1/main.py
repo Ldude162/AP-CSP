@@ -46,7 +46,7 @@ class Ground(game.sprite.Sprite):
         self.rect.y = 250
 
     # draw on screen
-    def draw(self):
+    def update(self):
         surface.blit(self.image, self.rect)
 
 '''
@@ -63,7 +63,7 @@ class Ceiling(game.sprite.Sprite):
         self.rect.y = 0
     
     # draw on screen
-    def draw(self):
+    def update(self):
         surface.blit(self.image, self.rect)
 
 '''
@@ -83,7 +83,7 @@ class Player(game.sprite.Sprite):
         self.onground = True
 
   # Draws the player on the screen and updates it
-    def draw(self):
+    def update(self):
         if self.onground == True:
             self.rect.bottom = ground.rect.top
         else:
@@ -115,7 +115,7 @@ class Redbox(game.sprite.Sprite):
         self.location = 1
 
     # draws on screen, updates speed, updates lap, chooses top or bottom
-    def draw(self):
+    def update(self):
 
         # moves to go on top or bottom
         if self.location == 1:
@@ -143,6 +143,12 @@ redBox = Redbox()
 ceiling = Ceiling()
 ticktock = game.time.Clock()
 
+# create all sprites group to hold all sprites
+allSprites = game.sprite.Group()
+allSprites.add(ground)
+allSprites.add(player)
+allSprites.add(redBox)
+allSprites.add(ceiling)
 
 #--- Game Functions ---
 
@@ -188,25 +194,22 @@ def start():
 
         # If they did, show game over screen.
         if collide:
-            endGame()
+            endGame()        
 
-        # Draw ceiling.
-        ceiling.draw()
+        # draw sprites
+        allSprites.update()
+
+        # draw score
+        surface.blit(startFont.render("Score: " + str(redBox.lap - 2), True, colors[3]),(175,10))
 
         # draw quit button, and if it is being hovered over make it lighter.
         if 0 <= mouse[0] <= 30 and 0 <= mouse[1] <= 20:
             game.draw.rect(surface,colors[0],[0,0,30,20])
         else:
             game.draw.rect(surface,colors[1],[0,0,30,20])
-
-        # draw various things on the screen
-        surface.blit(startFont.render("Score: " + str(redBox.lap - 2), True, colors[3]),(175,10))
+        
+        # draw text for quit button
         surface.blit(quitText,(0,0))
-        surface.blit(player.image, player.rect)
-        surface.blit(redBox.image, redBox.rect)
-        player.draw()
-        redBox.draw()
-        ground.draw()
 
         # update the screen to show the frame.
         game.display.update()
