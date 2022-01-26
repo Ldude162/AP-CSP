@@ -39,7 +39,7 @@ while i < len(newData):
             if b == 'TAG' or b == 'TAA' or b == 'TGA':
                 f = open('positions.txt', 'a')
                 # writes down the position of the stop
-                f.write('end ' + str(num) + ' is at ' + str(index * 3 + 263 + i) + '\n')
+                f.write('end ' + str(num) + ' is at ' + str(index * 3 + 266 + i) + '\n')
                 f.close()
                 f = open('output.txt', 'a')
                 f.write('\n')
