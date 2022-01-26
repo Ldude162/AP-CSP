@@ -60,7 +60,7 @@ while i < len(newData):
                 break
             else:
                 b = b.lower()
-                c = 0
+                c = 'z'
 
                 if b == 'ttt':
                     c = 'f'
