@@ -46,7 +46,7 @@ while i < len(newData):
                 print(b)
                 num += 1
                 # set the next character to check for
-                a = index * 3 + i
+                a = index * 3 + i + 2
                 print(i)
                 try:
                    prevLetters[0] = 'z' #newData[a - 2]
