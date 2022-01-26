@@ -602,4 +602,4 @@ gene 16 :
 gene 17 :
 1 ctagggagag ctgcctatat ggaagagccc
 gene 18 :
-1 tgtaaaatta attttagtag tgctatcccc atg
+1 
