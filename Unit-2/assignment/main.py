@@ -48,11 +48,11 @@ while i < len(newData):
                 # set the next character to check for
                 a = index * 3 + i
                 print(i)
-                #try:
-                 #   prevLetters[0] = newData[a - 2]
-                 #  prevLetters[1] = newData[a - 1]
-                #except:
-                 #   print('failed at ' + str(i))
+                try:
+                   prevLetters[0] = 'z' #newData[a - 2]
+                   prevLetters[1] = 'z' #newData[a - 1]
+                except:
+                    print('failed at ' + str(i))
                 i = a
                 amminoIndex = 1
                 lineIndex = 1
