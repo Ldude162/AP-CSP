@@ -60,25 +60,144 @@ while i < len(newData):
                 break
             else:
                 b = b.lower()
-                for d in range(len(b)):
-                    if lineIndex == 51:
-                        f = open('output.txt', 'a')
-                        f.write('\n' + str(amminoIndex) + ' ' + b[d])
-                        f.close()
-                        lineIndex = 2
-                        amminoIndex += 1
-                    elif lineIndex == 11 or lineIndex == 21 or lineIndex == 31 or lineIndex == 41:
-                        f = open('output.txt', 'a')
-                        f.write(' ' + b[d])
-                        f.close()
-                        lineIndex += 1
-                        amminoIndex += 1
-                    else:
-                        f = open('output.txt', 'a')
-                        f.write(b[d])
-                        f.close()
-                        lineIndex += 1
-                        amminoIndex += 1
+
+
+                if b == 'ttt':
+                    c = 'f'
+                elif b == 'ttc':
+                    c = 'f'
+                elif b == 'tta':
+                    c = 'l'
+                elif b == 'ttg':
+                    c = 'l'
+                elif b == 'ctt':
+                    c = 'l'
+                elif b == 'ctc':
+                    c = 'l'
+                elif b == 'cta':
+                    c = 'l'
+                elif b == 'ctg':
+                    c = 'l'
+                elif b == 'att':
+                    c = 'i'
+                elif b == 'atc':
+                    c = 'i'
+                elif b == 'ata':
+                    c = 'i'
+                elif b == 'atg':
+                    c = 'm'
+                elif b == 'gtt':
+                    c = 'v'
+                elif b == 'gtc':
+                    c = 'v'
+                elif b == 'gta':
+                    c = 'v'
+                elif b == 'gtg':
+                    c = 'v'
+                elif b == 'tct':
+                    c = 's'
+                elif b == 'tcc':
+                    c = 's'
+                elif b == 'tca':
+                    c = 's'
+                elif b == 'tcg':
+                    c = 's'
+                elif b == 'cct':
+                    c = 'p'
+                elif b == 'ccc':
+                    c = 'p'
+                elif b == 'cca':
+                    c = 'p'
+                elif b == 'ccg':
+                    c = 'p'
+                elif b == 'act':
+                    c = 't'
+                elif b == 'acc':
+                    c = 't'
+                elif b == 'aca':
+                    c = 't'
+                elif b == 'acg':
+                    c = 't'
+                elif b == 'gct':
+                    c = 'a'
+                elif b == 'gcc':
+                    c = 'a'
+                elif b == 'gca':
+                    c = 'a'
+                elif b == 'gcg':
+                    c = 'a'
+                elif b == 'tat':
+                    c = 'y'
+                elif b == 'tac':
+                    c = 'y'
+                elif b == 'cat':
+                    c = 'h'
+                elif b == 'cac':
+                    c = 'h'
+                elif b == 'caa':
+                    c = 'q'
+                elif b == 'cag':
+                    c = 'q'
+                elif b == 'aat':
+                    c = 'n'
+                elif b == 'aac':
+                    c = 'n'
+                elif b == 'aaa':
+                    c = 'k'
+                elif b == 'aag':
+                    c = 'k'
+                elif b == 'tgt':
+                    c = 'c'
+                elif b == 'tgc':
+                    c = 'c'
+                elif b == 'tgg':
+                    c = 'w'
+                elif b == 'cgt':
+                    c = 'r'
+                elif b == 'cgc':
+                    c = 'r'
+                elif b == 'cga':
+                    c = 'r'
+                elif b == 'cgg':
+                    c = 'r'
+                elif b == 'aga':
+                    c = 'r'
+                elif b == 'agg':
+                    c = 'r'
+                elif b == 'agt':
+                    c = 's'
+                elif b == 'agc':
+                    c = 's'
+                elif b == 'ggt':
+                    c = 'g'
+                elif b == 'ggt':
+                    c = 'g'
+                elif b == 'ggc':
+                    c = 'g'
+                elif b == 'gga':
+                    c = 'g'
+                elif b == 'ggg':
+                    c = 'g'
+                
+                if lineIndex == 51:
+                    f = open('output.txt', 'a')
+                    f.write('\n' + str(amminoIndex) + ' ' + c)
+                    f.close()
+                    lineIndex = 2
+                    amminoIndex += 1
+                elif lineIndex == 11 or lineIndex == 21 or lineIndex == 31 or lineIndex == 41:
+                    f = open('output.txt', 'a')
+                    f.write(' ' + c)
+                    f.close()
+                    lineIndex += 1
+                    amminoIndex += 1
+                else:
+                    f = open('output.txt', 'a')
+                    f.write(c)
+                    f.close()
+                    lineIndex += 1
+                    amminoIndex += 1
+                
             index += 1
     else:
         prevLetters[0] = prevLetters[1]
