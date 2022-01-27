@@ -12,8 +12,6 @@ prevLetters = ['z', 'z']
 i = 0
 #Loops through all of the letters
 while i < len(newData):
-    if num > 18:
-        break
     #Checks if there is an ATG
     if prevLetters[0] == 'A' and prevLetters[1] == 'T' and newData[i] == 'G':
         # write down the position of the atg
@@ -61,6 +59,7 @@ while i < len(newData):
             else:
                 b = b.lower()
                 c = 'z'
+
 
                 if b == 'ttt':
                     c = 'f'
@@ -178,6 +177,14 @@ while i < len(newData):
                     c = 'g'
                 elif b == 'ggg':
                     c = 'g'
+                elif b == 'gat':
+                    c = 'd'
+                elif b == 'gac':
+                    c = 'd'
+                elif b == 'gaa':
+                    c = 'e'
+                elif b == 'gag':
+                    c = 'e'
                 
                 if lineIndex == 51:
                     f = open('output.txt', 'a')
