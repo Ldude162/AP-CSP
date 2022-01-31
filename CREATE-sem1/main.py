@@ -153,11 +153,11 @@ allSprites.add(ceiling)
 #--- Game Functions ---
 
 # Most of the game happens here, gets triggered when start button is pressed.
-def start():
+def start(runNum):
     # Brings in variables related to pressing the quit button.
     global keepGoing
     global quit
-
+    collide = False
     # Loops the game until the game is exited.
     while keepGoing:
 
@@ -194,13 +194,23 @@ def start():
 
         # If they did, show game over screen.
         if collide:
-            endGame()        
+
+            # update enemy location and speed for next round
+            redBox.rect.x = 400
+            redBox.lap = 2
+            redBox.update()
+            
+            endGame()    
+                
 
         # draw sprites
         allSprites.update()
 
         # draw score
-        surface.blit(startFont.render("Score: " + str(redBox.lap - 2), True, colors[3]),(175,10))
+        surface.blit(startFont.render("Score: " + str(redBox.lap - 2), True, colors[3]),(200,10))
+
+        # draw what run this is
+        surface.blit(startFont.render('Run #: ' + str(runNum), True, colors[3]), (50, 10))
 
         # draw quit button, and if it is being hovered over make it lighter.
         if 0 <= mouse[0] <= 30 and 0 <= mouse[1] <= 20:
@@ -302,9 +312,12 @@ def endGame():
 quit = False
 keepGoing = True
 
+runs = 0
+
+
 # has the quit button been pressed?
 while quit != True:
-
+    runs += 1
     # game starts here
     while keepGoing:
 
@@ -324,7 +337,7 @@ while quit != True:
                 if 115 <= mouse[0] <= 255 and 130 <= mouse[1] <= 170:
 
                     # if so, start game.
-                    start()
+                    start(runs)
 
                 # is mouse hovering over quit button?
                 elif 0 <= mouse[0] <= 30 and 0 <= mouse[1] <= 20:
