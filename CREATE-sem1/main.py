@@ -112,6 +112,7 @@ class Redbox(game.sprite.Sprite):
         self.rect.x = 400
         self.rect.y = 0
         self.lap = 2
+        self.score = 0
         self.location = 1
 
     # draws on screen, updates speed, updates lap, chooses top or bottom
@@ -197,6 +198,7 @@ def start(runNum):
 
             # update enemy location and speed for next round
             redBox.rect.x = 400
+            redBox.score = redBox.lap
             redBox.lap = 2
             redBox.update()
             
@@ -250,12 +252,12 @@ def endGame():
         f.close()
 
     # Checks if the player has the new high score.
-    if redBox.lap - 2 > int(highscore):
+    if redBox.score - 2 > int(highscore):
 
         # if they do, change the high score.
-        highscore = redBox.lap - 2
+        highscore = redBox.score - 2
         f = open('leaderboard.txt', 'w')
-        f.write(str(redBox.lap - 2))
+        f.write(str(redBox.score - 2))
         f.close()
 
     # main loop for the end screen
@@ -300,7 +302,7 @@ def endGame():
         surface.blit(gameOver, (150,150))
         surface.blit(mainMenu, (175,205))
         surface.blit(startFont.render('High Score: ' + str(highscore), True, colors[3]), (150, 120))
-        surface.blit(startFont.render("Score: " + str(redBox.lap - 2), True, colors[3]),(175,175))
+        surface.blit(startFont.render("Score: " + str(redBox.score - 2), True, colors[3]),(175,175))
         surface.blit(quitText,(0,0))
 
         # update the screen, so it shows the new frame.
