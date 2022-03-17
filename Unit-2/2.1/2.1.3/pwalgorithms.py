@@ -25,12 +25,42 @@ def two_words(password):
     words = get_dictionary()
     guesses = 0
     
+    w5000 = []
+    w25k = []
+    index = 0
+    for i in words:
+      if index < 5000:
+        w5000.append(i)
+      else:
+        w25k.append(i)
+      index += 1
+
+    
     # get each word from the dictionary file
-    for w in words:
-        for a in words:
-            guesses += 1
-            if (w + a == password):
-              return True, guesses
+
+    for w in w5000:
+      for a in w5000:
+        guesses += 1
+        if w + a == password:
+          return True, guesses
+
+    for w in w5000:
+      for a in w25k:
+        guesses += 1
+        if w + a == password:
+          return True, guesses
+    
+    for w in w25k:
+      for a in w5000:
+        guesses += 1
+        if w + a == password:
+          return True, guesses
+
+    for w in w25k:
+      for a in w25k:
+        guesses += 1
+        if w + a == password:
+          return True, guesses
     return False, guesses
 
 def two_words_and_digit(password):
