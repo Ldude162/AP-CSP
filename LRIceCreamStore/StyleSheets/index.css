@@ -1,0 +1,83 @@
+/* Linus Reynolds May 2022 */
+
+body{
+    font-family: "Marker Felt", "Comic Sans MS", fantasy;
+    color: #0d00ff;
+    background-image: url(../Images/background.jpg)
+}
+
+h1 {
+    color: #00a;
+    text-align: center;
+    padding: auto;
+    background-color: #fff;
+    border-style: dotted;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    border-collapse: collapse;
+    cellspacing: 0px;
+}
+
+tr {
+    border: 1px solid #ffffff;
+    text-align: center;
+    background-color:#9FB6CD;
+}
+
+th {
+    text-align: center;
+    color: #ffffff;
+    background-color: #003366;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    border-style: dotted;
+    border-color: #00a;
+    margin-left: 40%;
+    margin-right: 40%;
+    text-align: center;
+    background-color: #fff;
+}
+
+.tableImg {
+    width: 50%;
+}
+
+#first {
+    background-color: #fff;
+    color: #000;
+}
+
+#second {
+    background-color: #f00;
+    color: #000
+}
+
+#third {
+    background-color: #544;
+    color: #fff
+}
+
+#fourth {
+    background-color: #fff;
+    color: #000
+}
+
+#fifth {
+    background-color: #0a0;
+    color: #000
+}
