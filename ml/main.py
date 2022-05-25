@@ -13,11 +13,8 @@ print(people)
 def trainingFunc(ratings, movies, people):
     index = 4
 
-    for i in people.iterrows():
-        current = ratings.loc[1:57, index]
-        current = current.to_frame()
-        for a in current.iterrows():
-            print(a[1])
+    for i in ratings.iterrows():
+        print(i)
 
 
 trainingFunc(ratings, movies, people)
