@@ -14,7 +14,10 @@ def trainingFunc(ratings, movies, people):
     index = 4
     print(ratings)
     result = pd.DataFrame()
-    print(result)
+    usertable = pd.DataFrame(index=range(21), columns=range(21))
+    usertable = usertable.replace(usertable, 1)
+    print(usertable)
+    
 
     for i, row in ratings.iterrows():
         
@@ -22,9 +25,11 @@ def trainingFunc(ratings, movies, people):
 
         for a, user in row.iterrows():
             result.at[i,a] = 5
-
-    print(result)
             
+            for b, user2 in row.iterrows():
+                if b == a:
+                    continue
+
 
 
 trainingFunc(ratings, movies, people)
