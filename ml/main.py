@@ -17,7 +17,13 @@ def trainingFunc(ratings, movies, people):
     print(result)
 
     for i, row in ratings.iterrows():
-        print(type(row))
+        
+        row = row.to_frame()
+
+        for a, user in row.iterrows():
+            result.at[i,a] = 5
+
+    print(result)
             
 
 
