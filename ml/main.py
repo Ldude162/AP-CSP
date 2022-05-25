@@ -12,7 +12,7 @@ people = people.to_frame()
 print(people)
 def trainingFunc(ratings, movies, people):
     index = 4
-    print(type(ratings))
+    print(ratings)
     result = pd.DataFrame()
     print(result)
 
