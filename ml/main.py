@@ -14,8 +14,7 @@ def trainingFunc(ratings, movies, people):
     index = 4
     print(ratings)
     result = pd.DataFrame()
-    usertable = pd.DataFrame(index=range(21), columns=range(21))
-    usertable = usertable.replace(usertable, 1)
+    usertable = pd.DataFrame(data=1, index=range(21), columns=range(21))
     print(usertable)
     
 
