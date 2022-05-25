@@ -17,7 +17,7 @@ def trainingFunc(ratings, movies, people):
     print(result)
 
     for i in ratings.iterrows():
-        print(i)
+        print(i[20])
         #for a in i:
             
 
