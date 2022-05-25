@@ -16,9 +16,8 @@ def trainingFunc(ratings, movies, people):
     result = pd.DataFrame()
     print(result)
 
-    for i in ratings.iterrows():
-        for a in i:
-            print(a)
+    for i, row in ratings.iterrows():
+        print(row[0])
             
 
 
