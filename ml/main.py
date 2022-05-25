@@ -13,8 +13,13 @@ print(people)
 def trainingFunc(ratings, movies, people):
     index = 4
 
+    result = pd.DataFrame()
+    print(result)
+
     for i in ratings.iterrows():
-        print(i)
+        i = i.to_frame()
+        #for a in i:
+            
 
 
 trainingFunc(ratings, movies, people)
