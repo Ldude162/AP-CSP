@@ -1,3 +1,4 @@
+# I feel more comfortable with pandas, so i am converting the array to a dataframe.
 import pandas as pd
 import numpy as np
 
@@ -11,16 +12,20 @@ people = data.loc[0, 4:24]
 
 ratings = ratings.astype(float)
 
+ratings.to_numpy()
 
 movies = movies.to_frame()
 people = people.to_frame()
+print(people.shape)
+
+
 
 print(people)
 def guessRating(ratings, movies, people):
     
     result = pd.DataFrame()
-    usertable = pd.DataFrame(data=3, index=range(21), columns=range(21))
-   
+    usertable = pd.DataFrame(data=3, index=range(people.shape[0]), columns=range(people.shape[0]))
+    ratings = pd.DataFrame(ratings)
     
     multiplier = 1
 
@@ -103,7 +108,7 @@ def guessRating(ratings, movies, people):
             weighted[matches.index(d)] = point * index2
             number += index2
             index2 -= 1
-        
+    
         result.at[i,0] = sum(weighted) / number
 
 
@@ -165,7 +170,7 @@ def guessRating(ratings, movies, people):
 
     print(result)
 
-    difference = pd.DataFrame(data=0, index=range(57), columns=range(21))
+    difference = pd.DataFrame(data=0, index=range(ratings.shape[0]), columns=range(ratings.shape[1]))
 
     for i, row in ratings.iterrows():
         row = row.to_frame()

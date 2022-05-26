@@ -23,7 +23,7 @@ def guessRating(ratings, movies, people):
     ratings = pd.DataFrame(ratings)
 
 
-    result = pd.DataFrame()
+    result = pd.DataFrame(data=0, index=range(57), columns=range(20))
     usertable = pd.DataFrame(data=3, index=range(21), columns=range(21))
    
     
@@ -165,7 +165,7 @@ def guessRating(ratings, movies, people):
                 weighted[matches.index(d)] = point * index2
                 number += index2
                 index2 -= 1
-            result.at[i,a - 4] = sum(weighted) / number
+            result.at[i,a] = sum(weighted) / number
     
             
 
@@ -179,7 +179,6 @@ def guessRating(ratings, movies, people):
         for a, column in row.iterrows():
             if ratings.at[i,a] < 0:
                 continue
-
             difference.at[i,a] = result.at[i,a] - ratings.at[i,a]
     mean = 0
     index = 0
