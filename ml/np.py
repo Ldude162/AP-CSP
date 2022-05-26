@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy as np
+
 
 data = pd.read_csv('./ml/data.csv', sep=',', header=None)
 
@@ -11,6 +11,7 @@ people = data.loc[0, 4:24]
 
 ratings = ratings.astype(float)
 
+ratings = ratings.to_numpy()
 
 movies = movies.to_frame()
 people = people.to_frame()
@@ -18,6 +19,10 @@ people = people.to_frame()
 print(people)
 def guessRating(ratings, movies, people):
     
+
+    ratings = pd.DataFrame(ratings)
+
+
     result = pd.DataFrame()
     usertable = pd.DataFrame(data=3, index=range(21), columns=range(21))
    
@@ -29,8 +34,9 @@ def guessRating(ratings, movies, people):
         row = row.to_frame()
         for a, user in row.iterrows():
             index = 0
+
             for b, user2 in row.iterrows():
-                newa = a - 4
+                newa = a
                 if b == a:
                     index += 1
                     continue
@@ -63,10 +69,10 @@ def guessRating(ratings, movies, people):
 
             if c == 0:
                 continue
-            elif ratings.at[i,c + 3] < 0:
+            elif ratings.at[i,c] < 0:
                 continue
 
-
+            print(row2)
 
             if row2 > matches[0][0]:
                 matches[4] = matches[3]
@@ -74,6 +80,7 @@ def guessRating(ratings, movies, people):
                 matches[2] = matches[1]
                 matches[1] = matches[0]
                 matches[0] = (row2, c)
+                print(matches[0])
             elif row2 > matches[1][0]:
                 matches[4] = matches[3]
                 matches[3] = matches[2]
@@ -98,12 +105,12 @@ def guessRating(ratings, movies, people):
             
             if d[0] == -500:
                 continue
-            point = ratings.at[i,d[1] + 3]
+            point = ratings.at[i,d[1]]
 
             weighted[matches.index(d)] = point * index2
             number += index2
             index2 -= 1
-        
+
         result.at[i,0] = sum(weighted) / number
 
 
@@ -120,7 +127,7 @@ def guessRating(ratings, movies, people):
 
                 if c == a:
                     continue
-                elif ratings.at[i,c + 4] < 0:
+                elif ratings.at[i,c] < 0:
                     continue
 
 
@@ -153,7 +160,7 @@ def guessRating(ratings, movies, people):
 
                 if d[0] == -500:
                     continue
-                point = ratings.at[i,d[1] + 4]
+                point = ratings.at[i,d[1]]
 
                 weighted[matches.index(d)] = point * index2
                 number += index2
@@ -173,7 +180,7 @@ def guessRating(ratings, movies, people):
             if ratings.at[i,a] < 0:
                 continue
 
-            difference.at[i - 1,a - 4] = result.at[i,a - 4] - ratings.at[i,a]
+            difference.at[i,a] = result.at[i,a] - ratings.at[i,a]
     mean = 0
     index = 0
     for i, row in difference.iterrows():
