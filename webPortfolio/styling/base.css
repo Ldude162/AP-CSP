@@ -75,3 +75,19 @@ a:hover {
     padding-left: 1%;
     padding-right: 1%;
 }
+
+.largeimage {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+    padding-top: 1%;
+}
+
+.smallimage {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 10%;
+    padding-top: 1%;
+}
